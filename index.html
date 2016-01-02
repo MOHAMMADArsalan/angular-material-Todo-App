@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Todo App</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="node_modules/angular-material-icons/angular-material-icons.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-material-icons/angular-material-icons.js"></script>
+    <script src="app.js"></script>
+    
+</head>
+<body ng-controller="myCtrl as app">
+       <md-toolbar>
+
+        <div class="md-toolbar-tools" layout="column" layout-align="center center">
+            <h2>
+      Todo App with angular Material
+        </h2>
+        </div>
+    </md-toolbar>
+    <div layout="row">
+        <div flex></div>
+        <form flex="75">
+            <div layout="row">
+                <md-input-container flex>
+                    <label>Add Todo :</label>
+                    <input type="text" aria-label="todo" flex ng-model="app.TodoData.todo" autocomplete="off"  flex-gt-sm >
+                    
+                </md-input-container>
+                <div flex="10">
+                        <md-button type="submit" ng-click="app.Add(app.TodoData)" class="md-fab" aria-label="Add todo">
+                        <ng-md-icon icon="add" size="25"></ng-md-icon>
+                </md-button>
+               </div>
+            </div>
+        </form>
+
+        <div flex></div>
+
+    </div>
+    <div layout="row">
+        <div flex></div>
+        <div flex="33"></div>
+        <div flex="33">{{app.done}} remaining {{app.getTotalTodo()}} [<a href="" ng-click="app.Archive()">Archive</a>]</div>
+    </div>
+    <div layout="row">
+        <div flex="20"></div>
+        
+        <div>
+        <md-list >
+            <md-list-item ng-repeat="addtodo in app.Todo track by $index">
+                <md-checkbox ng-model="addtodo.selected" ng-click="app.archive($index)"></md-checkbox>
+                <p class="done-{{addtodo.selected}}">{{addtodo.todo}}</p>
+
+            </md-list-item>
+
+        </md-list>
+         <div>
+        <div flex></div>
+         
+    </div>
+</body>
+</html>
