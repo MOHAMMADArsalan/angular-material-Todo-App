@@ -7,18 +7,18 @@ angular.module("myApp",['ngMaterial','ngMdIcons'])
         todo : "Todo",
         selected : false
     }];
-    this.done = 1;
+    this.remainig = 1;
     this.getTotalTodo = function(){
         return self.Todo.length;
     }
     this.archive =function(index){
         if(!self.Todo[index].selected){
-         self.done--;    
+         self.remainig--;    
     }else {
-        self.done++;
+        self.remainig++;
     }
     }
-    this.Archive = function(){
+    this.remove = function(){
              self.Todo = filterFilter(self.Todo ,function(addtodo){
                     return ! addtodo.selected  
              })
@@ -27,7 +27,7 @@ angular.module("myApp",['ngMaterial','ngMdIcons'])
     
     this.Add = function(){
        self.Todo.push({todo : self.TodoData.todo , selected : false});
-       self.done++;
+       self.remainig++;
        self.TodoData.todo= "";
     }
  
